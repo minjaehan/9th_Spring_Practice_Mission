@@ -1,10 +1,7 @@
 package umc.domain.member.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import umc.domain.member.entity.mapping.MemberFood;
 import umc.domain.member.entity.mapping.MemberTerm;
 import umc.domain.member.enums.Address;
@@ -22,7 +19,7 @@ import java.util.List;
 @Builder
 @Getter
 @Table(name = "member")
-@NoArgsConstructor
+@NoArgsConstructor (access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class Member extends BaseEntity
 {
@@ -64,15 +61,22 @@ public class Member extends BaseEntity
     @Column(name = "phone_number")
     private String phone_number;
 
+    @Column(name = "isdeleted")
+    private Boolean isdeleted;
+
+    @Builder.Default
     @OneToMany(mappedBy = "member")
     private List<MemberFood> memberFoods = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "member")
     private List<MemberMission> MemberMissions = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "member")
     private List<Review> reviews = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "member")
     private List<MemberTerm> member_terms = new ArrayList<>();
 

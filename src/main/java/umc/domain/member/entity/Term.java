@@ -1,10 +1,7 @@
 package umc.domain.member.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import umc.domain.member.entity.mapping.MemberTerm;
 import umc.domain.member.enums.Term_name;
 
@@ -15,7 +12,7 @@ import java.util.List;
 @Builder
 @Getter
 @Table(name = "term")
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 
 public class Term {
@@ -23,10 +20,11 @@ public class Term {
     @GeneratedValue
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     @Enumerated(EnumType.STRING)
     private Term_name name;
 
+    @Builder.Default
     @OneToMany(mappedBy = "term")
     private List<MemberTerm> member_terms = new ArrayList<>();
 }

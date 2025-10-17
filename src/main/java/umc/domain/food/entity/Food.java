@@ -1,10 +1,7 @@
 package umc.domain.food.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import umc.domain.food.enums.FoodName;
 import umc.domain.member.entity.mapping.MemberFood;
 import umc.global.entity.BaseEntity;
@@ -17,7 +14,7 @@ import java.util.List;
 @Builder
 @Getter
 @Table(name = "food")
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 
 public class Food extends BaseEntity {
@@ -26,7 +23,7 @@ public class Food extends BaseEntity {
     @GeneratedValue
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, unique = true)
     @Enumerated(EnumType.STRING)
     private FoodName name;
 

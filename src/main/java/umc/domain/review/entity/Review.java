@@ -41,6 +41,7 @@ public class Review extends BaseEntity {
     @JoinColumn(name = "store_id")
     private Store store;
 
+    @Builder.Default
     @OneToMany(mappedBy = "review")
     private List<Review_photo> photos= new ArrayList<>();
 

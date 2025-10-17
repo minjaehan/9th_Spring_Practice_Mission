@@ -22,6 +22,7 @@ public class Location {
     @Column(name ="name",nullable = false)
     private String name;
 
+    @Builder.Default
     @OneToMany(mappedBy = "location")
     private List<Store>  stores =  new ArrayList<>();
 

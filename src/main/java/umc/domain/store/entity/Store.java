@@ -43,6 +43,7 @@ public class Store extends BaseEntity {
     @JoinColumn(name = "location_id")
     private Location location;
 
+    @Builder.Default
     @OneToMany(mappedBy = "Store")
     private List<Review> reviews = new ArrayList<>();
 
