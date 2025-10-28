@@ -12,7 +12,7 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
     @Transactional
     @Query(value = """
             INSERT  INTO  review
-            (content, star, user_id, store_id ,created_at, updat    ed_at)
+            (content, star, user_id, store_id ,created_at, updated_at)
             VALUES
                     (:content, :userId, :memberId, : storeId, NOW(),NOW())
     """, nativeQuery = true)
