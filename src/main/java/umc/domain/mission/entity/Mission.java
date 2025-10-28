@@ -35,6 +35,9 @@ public class Mission extends BaseEntity {
     @Column(name = "point",nullable = false)
     private Integer point;
 
+    @Column(name = "leastAmount",nullable = false)
+    private Integer least_amount;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")
     private Store store;
