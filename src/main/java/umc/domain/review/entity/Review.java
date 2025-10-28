@@ -10,7 +10,6 @@ import umc.domain.store.entity.Store;
 import umc.global.entity.BaseEntity;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -45,7 +44,7 @@ public class Review extends BaseEntity {
     @OneToMany(mappedBy = "review")
     private List<Review_photo> photos= new ArrayList<>();
 
-    @OneToOne(mappedBy = "review")
+    @OneToOne(mappedBy = "review" )
     private Reply reply;
 
 

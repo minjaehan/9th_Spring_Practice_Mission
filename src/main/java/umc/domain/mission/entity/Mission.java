@@ -16,7 +16,7 @@ import java.util.List;
 @Entity
 @Builder
 @Getter
-@Table
+@Table(name = "mission")
 @NoArgsConstructor
 @AllArgsConstructor
 

@@ -20,7 +20,7 @@ import java.util.List;
 @Getter
 @Table(name = "member")
 @NoArgsConstructor (access = AccessLevel.PROTECTED)
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Member extends BaseEntity
 {
     @Id
@@ -61,8 +61,8 @@ public class Member extends BaseEntity
     @Column(name = "phone_number")
     private String phone_number;
 
-    @Column(name = "isdeleted")
-    private Boolean isdeleted;
+    @Column(name = "is_deleted",nullable = false)
+    private boolean is_deleted =  false;
 
     @Builder.Default
     @OneToMany(mappedBy = "member")
