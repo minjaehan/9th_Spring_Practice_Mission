@@ -7,6 +7,11 @@ import java.util.Optional;
 
 
 public interface MemberRepository  extends JpaRepository<Member,Long> {
-    Optional<Member> findByIdAndDeletedFalse(Long id);
+    Optional<Member> findByIdAndDeletedFalse(Long id);  // 회원이 없을 경우를 대비해서 optional을 사용.
+// 일단 해당 회원의 전체 컬럼을 다 조회하는 쿼리지만, 나중에는 projection을 사용해서 원하는 컬럼 정보만을 따로 뽑아서 쿼리를 날릴 수 있음
+    //그게 싫으면 그냥 @query 사용해서 바로 레포지토리에서 날려도 되고
+    // 그리고 그것도 싫으면 그냥 한번에 조회만 하고 나중에 DTO에 보내고싶은 정보만 담아서 리스폰스 해줄 수도 있음
+    //근데 DTO에 담기만 하는 방식은 쿼리를 날리는 것 자체는 똑같기 때문에 SQL을 최적화해주지는 않음.
+
 }
 

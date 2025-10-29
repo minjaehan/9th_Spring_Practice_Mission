@@ -16,6 +16,8 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
             VALUES
                     (:content, :userId, :memberId, : storeId, NOW(),NOW())
     """, nativeQuery = true)
+    //insert하는 방법이 이게직관적이긴 한데 더 좋은 방법이 있음.
+    //근데 아직 어려워서 잘 모르겠습니다..
 
     int insertReviewNative(@Param("content") String content,
                            @Param("star") Float star,
