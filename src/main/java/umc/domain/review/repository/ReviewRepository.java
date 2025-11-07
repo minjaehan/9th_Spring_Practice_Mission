@@ -1,27 +1,7 @@
 package umc.domain.review.repository;
 
-import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import umc.domain.review.entity.Review;
 
 public interface ReviewRepository extends JpaRepository<Review, Long> {
-    @Modifying(clearAutomatically = true,flushAutomatically = true)
-    @Transactional
-    @Query(value = """
-            INSERT  INTO  review
-            (content, star, user_id, store_id ,created_at, updated_at)
-            VALUES
-                    (:content, :userId, :memberId, : storeId, NOW(),NOW())
-    """, nativeQuery = true)
-    //insert하는 방법이 이게직관적이긴 한데 더 좋은 방법이 있음.
-    //근데 아직 어려워서 잘 모르겠습니다..
-
-    int insertReviewNative(@Param("content") String content,
-                           @Param("star") Float star,
-                           @Param("memberId") Long memberId,
-                           @Param("storeId") Long storeId);
-
 }
