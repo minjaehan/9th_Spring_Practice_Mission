@@ -47,10 +47,21 @@ public class Review extends BaseEntity {
     @OneToOne(mappedBy = "review" )
     private Reply reply;
 
-
-
-
-
+    @Builder
+    public Review(String content, Float star, Member member, Store store) {
+        this.content = content;
+        this.star = star;
+        this.member = member;
+        this.store = store;
+    }
+    public static Review createReview(String content, Float star, Member member, Store store) {
+        return Review.builder()
+                .content(content)
+                .star(star)
+                .member(member)
+                .store(store)
+                .build();
+    }
 
 
 }
