@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.domain.review.dto.MyReviewQuery;
 import umc.domain.review.dto.ReviewCard;
-import umc.domain.review.repository.ReviewQueryRepository;
 import umc.domain.review.repository.ReviewRepository;
 
 @Service
@@ -16,9 +15,9 @@ import umc.domain.review.repository.ReviewRepository;
 public class ReviewQueryService {
 
     private final ReviewRepository reviewRepository;
-    private final ReviewQueryRepository reviewQueryRepo;
+    private final ReviewRepository reviewRepo;
 
     public Page<ReviewCard> getMyReviews(Long currentMemberId, MyReviewQuery query, Pageable pageable) {
-        return reviewQueryRepo.findMyReviews(currentMemberId, query, pageable);
+        return reviewRepo.findMyReviews(currentMemberId, query, pageable);
     }
 }

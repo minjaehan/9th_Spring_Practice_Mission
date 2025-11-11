@@ -2,6 +2,7 @@ package umc.domain.review.dto;
 
 import umc.domain.review.service.ReviewSort;
 
+
 public record MyReviewQuery(
         Long storeId,
         Float star,       // 단일 별점
