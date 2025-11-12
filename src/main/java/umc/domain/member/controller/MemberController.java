@@ -1,8 +1,11 @@
 package umc.domain.member.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import umc.domain.member.dto.res.MemberResDTO;
 import umc.domain.member.service.MemberService;
 
 @RestController
@@ -10,5 +13,10 @@ import umc.domain.member.service.MemberService;
 @RequestMapping("/api/members")
 public class MemberController {
     private final MemberService memberService;
+
+    @GetMapping("/{id}")
+    public MemberResDTO.Mypage getMember(@PathVariable Long id) {
+        return memberService.getById(id);
+    }
 
 }
