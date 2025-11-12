@@ -4,8 +4,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import umc.domain.mission.dto.CompletedMissionDto;
-import umc.domain.mission.dto.OnGoingMissionDto;
+import umc.domain.mission.dto.res.CompletedMissionDto;
+import umc.domain.mission.dto.res.OnGoingMissionDto;
 import umc.domain.mission.entity.mapping.MemberMission;
 
 import java.util.List;

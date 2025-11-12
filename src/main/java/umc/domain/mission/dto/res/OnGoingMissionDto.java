@@ -1,4 +1,4 @@
-package umc.domain.mission.dto;
+package umc.domain.mission.dto.res;
 
 import java.time.LocalDate;
 
