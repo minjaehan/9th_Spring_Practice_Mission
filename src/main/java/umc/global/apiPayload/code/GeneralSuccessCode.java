@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 
 public enum GeneralSuccessCode implements BaseSuccessCode {
 
-    //작성
+    OK(HttpStatus.OK, "COMMON200_1", "요청이 성공적으로 처리되었습니다."),
 
     ;
     private final HttpStatus status;
