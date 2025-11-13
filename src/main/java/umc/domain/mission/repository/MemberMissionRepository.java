@@ -10,11 +10,12 @@ import umc.domain.mission.entity.mapping.MemberMission;
 
 import java.util.List;
 
+
 public interface MemberMissionRepository extends JpaRepository<MemberMission, Integer> {
 
     // 진행중 미션
     @Query("""
-        select new umc.domain.mission.dto.OnGoingMissionDto(s.name, m.point, m.deadline, m.leastAmount)
+        select new umc.domain.mission.dto.res.OnGoingMissionDto(s.name, m.point, m.deadline, m.leastAmount)
         from MemberMission mm
         join mm.mission m
         join m.store s
@@ -27,7 +28,7 @@ public interface MemberMissionRepository extends JpaRepository<MemberMission, In
 
     // 진행완료 미션
     @Query("""
-        select new umc.domain.mission.dto.CompletedMissionDto(m.id, s.name, m.point, m.leastAmount)
+        select new umc.domain.mission.dto.res.CompletedMissionDto(m.id, s.name, m.point, m.leastAmount)
         from MemberMission mm
         join mm.mission m
         join m.store s
