@@ -45,7 +45,6 @@ public class MissionRepositoryImpl implements MissionRepositoryCustom {
                 .from(m)
                 .join(m.store, s)
                 .join(s.location, l)
-                .where(l.name.eq(name))
                 .fetchOne();
 
         return PageableExecutionUtils.getPage(content, pageable, () -> count);

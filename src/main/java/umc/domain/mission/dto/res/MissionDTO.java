@@ -1,10 +1,12 @@
 package umc.domain.mission.dto.res;
 
+import lombok.Builder;
 
+@Builder
 public record  MissionDTO (
     String storeName,
     Integer least_amount,
     Integer point,
     String locationName,
-    String deadline
+    int deadline
 ){ }

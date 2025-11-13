@@ -16,6 +16,7 @@ public class MemberMissionResDTO {
         private Long memberId;
         private List<OnGoingMissionDto> missions;
         private int totalCount;
+
     }
 
     @Getter
