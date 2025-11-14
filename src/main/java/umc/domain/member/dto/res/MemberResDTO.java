@@ -6,11 +6,10 @@ import umc.domain.member.enums.Gender;
 
 
 public class MemberResDTO {
-    @Getter
     @Builder
-    public static class Mypage {
-        private Long id;
-        private String name;
-        private Gender gender;
-    }
+    public record Mypage (
+            Long id,
+        String name,
+        Gender gender
+    ){}
 }
