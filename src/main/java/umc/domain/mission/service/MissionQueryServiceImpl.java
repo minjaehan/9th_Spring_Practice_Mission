@@ -2,7 +2,6 @@ package umc.domain.mission.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,8 +10,7 @@ import umc.domain.mission.dto.res.MissionResDTO;
 import umc.domain.mission.entity.Mission;
 import umc.domain.mission.repository.MissionRepository;
 
-import java.time.LocalDate;
-import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
