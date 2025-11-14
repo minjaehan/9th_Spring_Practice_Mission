@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.springframework.http.HttpStatus;
 import umc.global.apiPayload.code.BaseErrorCode;
 import umc.global.apiPayload.code.BaseSuccessCode;
 
