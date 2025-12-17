@@ -2,6 +2,7 @@ package umc.domain.member.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import umc.domain.auth.enums.Role;
 import umc.domain.member.entity.mapping.MemberFood;
 import umc.domain.member.entity.mapping.MemberTerm;
 import umc.domain.member.enums.Address;
@@ -26,6 +27,15 @@ public class Member extends BaseEntity
     @Id
     @GeneratedValue
     private Long id;
+
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -54,9 +64,6 @@ public class Member extends BaseEntity
 
     @Column(name = "point")
     private Integer point;
-
-    @Column(name = "email")
-    private String email;
 
     @Column(name = "phoneNumber")
     private String phoneNumber;

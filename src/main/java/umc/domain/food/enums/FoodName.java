@@ -1,6 +1,7 @@
 package umc.domain.food.enums;
 
 public enum FoodName {
+
     WESTERN("양식"),
     CHINESE("중식"),
     KOREAN("한식");

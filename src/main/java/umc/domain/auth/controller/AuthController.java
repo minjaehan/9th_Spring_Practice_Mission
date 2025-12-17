@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import umc.domain.auth.dto.req.AuthReqDTO;
 import umc.domain.auth.dto.res.AuthResDTO;
 import umc.domain.auth.exception.code.AuthSuccessCode;
+import umc.domain.auth.service.SignInService;
 import umc.domain.auth.service.SignUpService;
 import umc.global.apiPayload.ApiResponse;
 
@@ -16,11 +17,18 @@ import umc.global.apiPayload.ApiResponse;
 public class AuthController {
 
     private final SignUpService signUpService;
+    private final SignInService signInService;
     // 회원가입
     @PostMapping("/sign-up")
-    public ApiResponse<AuthResDTO .SignUpDTO> signUp(
+    public ApiResponse<AuthResDTO.SignUpDTO> signUp(
             @RequestBody @Valid AuthReqDTO.SignUpDTO dto
     ){
         return ApiResponse.onSuccess(AuthSuccessCode.SIGN_UP_SUCCESS, signUpService.signup(dto));
+    }
+    @PostMapping("/sign-in")
+    public ApiResponse<AuthResDTO.LoginDTO> signIn(
+            @RequestBody @Valid AuthReqDTO.SignInDTO dto
+    ){
+        return ApiResponse.onSuccess(AuthSuccessCode.SIGN_IN_SUCCESS, signInService.signIn(dto));
     }
 }

@@ -2,10 +2,12 @@ package umc.domain.auth.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import umc.domain.auth.converter.AuthConverter;
 import umc.domain.auth.dto.req.AuthReqDTO;
 import umc.domain.auth.dto.res.AuthResDTO;
+import umc.domain.auth.enums.Role;
 import umc.domain.food.entity.Food;
 import umc.domain.food.exception.FoodException;
 import umc.domain.food.exception.code.FoodErrorCode;
@@ -26,13 +28,18 @@ public class SignUpServiceImpl implements SignUpService {
     private final MemberRepository memberRepository;
     private final MemberFoodRepository memberFoodRepository;
     private final FoodRepository foodRepository;
+    public final PasswordEncoder passwordEncoder ;
 
     @Override
     @Transactional
     public AuthResDTO.SignUpDTO signup(
             AuthReqDTO.SignUpDTO dto
-    ) { // 사용자 생성
-        Member member = AuthConverter.toMember(dto);
+
+    ) {
+        //솔트된 비밀번호 생성
+        String salt = passwordEncoder.encode(dto.password());
+        // 사용자 생성
+        Member member = AuthConverter.toMember(dto,salt,  Role.ROLE_USER);
         // DB 적용
         memberRepository.save(member);
 
